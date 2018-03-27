@@ -1,0 +1,26 @@
+plugins {
+    id 'groovy'
+    id 'me.champeau.gradle.jmh' version "0.4.3"
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.11'
+    compile("org.projectlombok:lombok:1.16.6")
+}
+
+jmh {
+//    warmupIterations = 1
+//    iterations = 1
+
+    include = 'groovybench.*'
+    resultFormat = 'csv'
+    resultsFile = file('build/reports/benchmarks.csv')
+}
+
+//tasks['jmhClasses'].dependsOn('compileGroovy')
